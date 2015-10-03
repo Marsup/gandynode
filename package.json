@@ -1,6 +1,6 @@
 {
   "name": "gandynode",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Update Gandi.net DNS zones based on detected public IP addresses (IPv4 & IPv6)",
   "repository": "git://github.com/Marsup/gandynode",
   "license": "BSD-3-Clause",
