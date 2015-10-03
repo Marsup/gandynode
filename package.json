@@ -1,0 +1,43 @@
+{
+  "name": "gandynode",
+  "version": "1.0.0",
+  "description": "Update Gandi.net DNS zones based on detected public IP addresses (IPv4 & IPv6)",
+  "repository": "git://github.com/Marsup/gandynode",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "gandi",
+    "ipv4",
+    "ipv6",
+    "dyndns"
+  ],
+  "bin": "./bin/gandynode",
+  "main": "lib/index.js",
+  "scripts": {
+    "prebuild": "rm -rf lib",
+    "build": "babel --optional runtime src --out-dir lib",
+    "prepublish": "npm build"
+  },
+  "dependencies": {
+    "alce": "^1.1.0",
+    "babel-runtime": "^5.8.25",
+    "bluebird": "^2.10.1",
+    "bossy": "^2.0.0",
+    "bunyan": "^1.5.1",
+    "bunyan-prettystream": "^0.1.3",
+    "joi": "^6.7.1",
+    "lodash": "^3.10.1",
+    "node-gandi": "^2.0.1",
+    "public-ip": "^1.1.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-eslint": "^4.1.3",
+    "eslint": "^1.5.1",
+    "eslint-config-airbnb": "^0.1.0",
+    "eslint-plugin-babel": "^2.1.1"
+  },
+  "engines": {
+    "node": ">= 4.x.x",
+    "npm": ">= 3.x.x"
+  }
+}

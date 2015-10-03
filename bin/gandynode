@@ -1,0 +1,26 @@
+#!/usr/bin/env node
+
+var Bossy = require('bossy');
+var Gandynode = require('..');
+
+var definition = {
+    h: {
+        description: 'Show help',
+        alias: 'help',
+        type: 'boolean'
+    },
+    s: {
+        description: 'Silent mode',
+        alias: 'silent',
+        type: 'boolean'
+    }
+};
+
+var argv = Bossy.parse(definition);
+
+if (argv.h || !argv._ || argv._.length !== 1) {
+    console.error(Bossy.usage(definition, 'gandynode <configuration file>'));
+    process.exit(1);
+}
+
+Gandynode.run(argv._[0], argv);
