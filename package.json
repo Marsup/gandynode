@@ -15,7 +15,7 @@
   "scripts": {
     "prebuild": "rm -rf lib",
     "build": "babel --optional runtime src --out-dir lib",
-    "prepublish": "npm build"
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "alce": "^1.1.0",
