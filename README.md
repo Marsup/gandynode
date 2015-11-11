@@ -30,6 +30,7 @@ Here is the format of the configuration file :
         -  `type`: type of address, allowed values are 'A' (IPv4) and 'AAAA' (IPv6) (**required**)
         -  `name`: name of the record (**required**)
         -  `ttl`: TTL (in seconds) of the record. Defaults to 300.
+- `removeobsoletezoneversion`: remove previously active zone version after switching to the updated version. Defaults to `false`.
 
 Example :
 
@@ -46,7 +47,8 @@ Example :
         ]
     },
     "loglevel": "info",
-    "logfile": "mylog.log"
+    "logfile": "mylog.log",
+    "removeobsoletezoneversion": true
 }
 ```
 
