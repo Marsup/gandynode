@@ -105,9 +105,25 @@ exports.run = async function run(configurationFile, options) {
 
       logger.debug('Updating zone for %s with new settings', domain);
       await gandi.callAsync('domain.zone.record.set', [zoneId, newVersion, records]);
+
+      let oldVersion;
+      if(config.removeobsoletezoneversion) {
+        logger.debug('Getting current version for zone %s', domain);
+        const zoneInfo = await gandi.callAsync('domain.zone.info', [zoneId]);
+        oldVersion = zoneInfo.version;
+        logger.info('Current version for zone %s is %d', domain, oldVersion);
+      }
+
       logger.debug('Enabling zone for %s as version %d', domain, newVersion);
       await gandi.callAsync('domain.zone.version.set', [zoneId, newVersion]);
       logger.info('Enabled zone for %s as version %d', domain, newVersion);
+
+      if(config.removeobsoletezoneversion) {
+        logger.debug('Removing obsolete zone %s version %d', domain, oldVersion);
+        await gandi.callAsync('domain.zone.version.delete', [zoneId, oldVersion]);
+        logger.info('Removed zone %s version %d', domain, oldVersion);
+      }
+
     } catch (err) {
       logger.error('Removing zone %s version %d', domain, newVersion);
       try {

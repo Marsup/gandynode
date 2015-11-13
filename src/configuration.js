@@ -13,7 +13,8 @@ const schema = Joi.object({
   apikey: Joi.string().length(24).alphanum().required(),
   loglevel: Joi.valid('trace', 'debug', 'info', 'warn', 'error', 'fatal').default('warn'),
   logfile: Joi.string().default(Path.join(process.cwd(), 'gandynode.log')),
-  domains: Joi.object({}).min(1).required().pattern(/^.+\..+$/, records)
+  domains: Joi.object({}).min(1).required().pattern(/^.+\..+$/, records),
+  removeobsoletezoneversion: Joi.boolean().default(false)
 });
 
 export default {
